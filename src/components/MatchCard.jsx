@@ -14,7 +14,14 @@ const MatchCard = ({ match }) => {
     : PLACEHOLDER_IMAGE_URL;
 
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden relative group">
+    <div
+      className="rounded-lg shadow-lg overflow-hidden relative group text-white"
+      style={{
+        backgroundImage: "url('/blob-scene-haikei.svg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center"
+      }}
+    >
       {/* Match Poster Image */}
       <img
         src={imageUrl}
@@ -24,7 +31,7 @@ const MatchCard = ({ match }) => {
 
       <div className="p-4">
         {/* Teams and Title */}
-        <h3 className="text-slate-900 text-lg font-semibold mb-2 line-clamp-2">
+        <h3 className="text-white text-lg font-semibold mb-2 line-clamp-2 drop-shadow-md">
           🏆 {match.title} 🏆
         </h3>
 
@@ -47,7 +54,7 @@ const MatchCard = ({ match }) => {
         </div>
 
         {/* Date & Time */}
-        <p className="text-slate-600 text-sm mb-3">📅 {formattedDate}</p>
+        <p className="text-slate-200 text-sm mb-3">📅 {formattedDate}</p>
 
         {/* Status Indicators */}
         <div className="flex items-center space-x-2 text-sm mb-4">
@@ -58,7 +65,7 @@ const MatchCard = ({ match }) => {
             </span>
           )}
           {match.sources && (
-            <span className="text-slate-600">
+            <span className="text-slate-200 font-medium">
               {match.sources.length} Streams
             </span>
           )}
