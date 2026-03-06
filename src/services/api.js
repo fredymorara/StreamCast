@@ -1,21 +1,37 @@
 // api.js
 const BASE_URL = 'https://streamed.pk/api';
 
+// Helper function to handle status checks
+const fetchJson = async (url) => {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`API Error: ${response.status} ${response.statusText}`);
+  }
+  return response.json();
+};
+
 export const api = {
   // Sports
-  getSports: () => fetch(`${BASE_URL}/sports`).then(r => r.json()),
+  getSports: () => fetchJson(`${BASE_URL}/sports`),
 
   // Matches
-  getAllMatches: () => fetch(`${BASE_URL}/matches/all`).then(r => r.json()),
-  getLiveMatches: () => fetch(`${BASE_URL}/matches/live`).then(r => r.json()),
-  getTodayMatches: () => fetch(`${BASE_URL}/matches/all-today`).then(r => r.json()),
-  getSportMatches: (sport) => fetch(`${BASE_URL}/matches/${sport}`).then(r => r.json()),
-  getPopularMatches: (endpoint) => fetch(`${BASE_URL}/matches/${endpoint}/popular`).then(r => r.json()),
+  getAllMatches: () => fetchJson(`${BASE_URL}/matches/all`),
+  getLiveMatches: () => fetchJson(`${BASE_URL}/matches/live`),
+  getTodayMatches: () => fetchJson(`${BASE_URL}/matches/all-today`),
+  getSportMatches: (sport) => fetchJson(`${BASE_URL}/matches/${sport}`),
+  getPopularMatches: (endpoint) => fetchJson(`${BASE_URL}/matches/${endpoint}/popular`),
 
   // Streams
-  getStreams: (source, id) => fetch(`${BASE_URL}/stream/${source}/${id}`).then(r => r.json()),
+  getStreams: (source, id) => fetchJson(`${BASE_URL}/stream/${source}/${id}`),
 
   // Images
   getBadgeUrl: (badge) => `${BASE_URL}/images/badge/${badge}.webp`,
-  getPosterUrl: (poster) => `https://streamed.pk${poster}.webp`,
+  getPosterUrl: (posterId) => {
+    // Check if it already includes a path
+    if (posterId.startsWith('/')) {
+      return `https://streamed.pk${posterId}.webp`;
+    }
+    // Otherwise use the proxy endpoint
+    return `${BASE_URL}/images/proxy/${posterId}.webp`;
+  },
 };

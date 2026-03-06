@@ -1,14 +1,17 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { api } from '../services/api';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { api } from "../services/api";
 
-const PLACEHOLDER_IMAGE_URL = 'https://via.placeholder.com/400x200?text=No+Image';
+const PLACEHOLDER_IMAGE_URL =
+  "https://via.placeholder.com/400x200?text=No+Image";
 
 const MatchCard = ({ match }) => {
   const navigate = useNavigate();
   const formattedDate = new Date(match.date * 1000).toLocaleString();
 
-  const imageUrl = match.poster ? api.getPosterUrl(match.poster) : PLACEHOLDER_IMAGE_URL;
+  const imageUrl = match.poster
+    ? api.getPosterUrl(match.poster)
+    : PLACEHOLDER_IMAGE_URL;
 
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden relative group">
@@ -25,37 +28,31 @@ const MatchCard = ({ match }) => {
           🏆 {match.title} 🏆
         </h3>
 
-        {/* Team Badges (Placeholder) */}
+        {/* Team Badges */}
         <div className="flex items-center space-x-2 mb-2">
-          {match.homeTeamBadge && (
+          {match.teams?.home?.badge && (
             <img
-              src={api.getBadgeUrl(match.homeTeamBadge)}
-              alt="Home Team Badge"
-              className="w-6 h-6"
+              src={api.getBadgeUrl(match.teams.home.badge)}
+              alt={`${match.teams.home.name} Badge`}
+              className="w-6 h-6 object-contain"
             />
           )}
-          {match.awayTeamBadge && (
+          {match.teams?.away?.badge && (
             <img
-              src={api.getBadgeUrl(match.awayTeamBadge)}
-              alt="Away Team Badge"
-              className="w-6 h-6"
+              src={api.getBadgeUrl(match.teams.away.badge)}
+              alt={`${match.teams.away.name} Badge`}
+              className="w-6 h-6 object-contain"
             />
           )}
         </div>
 
         {/* Date & Time */}
-        <p className="text-slate-600 text-sm mb-3">
-          📅 {formattedDate}
-        </p>
+        <p className="text-slate-600 text-sm mb-3">📅 {formattedDate}</p>
 
         {/* Status Indicators */}
         <div className="flex items-center space-x-2 text-sm mb-4">
-          {match.isLive && (
-            <span className="bg-red-600 text-white px-2 py-0.5 rounded-full font-bold">
-              🔴 LIVE
-            </span>
-          )}
-          {match.sources && match.sources.some(source => source.hd) && (
+          {/* We rely on the parent or category for "Live" status, or just show popular if API doesn't specify 'isLive' per-match explicitly */}
+          {match.sources && match.sources.some((source) => source.hd) && (
             <span className="bg-green-500 text-white px-2 py-0.5 rounded-full font-bold">
               HD
             </span>
