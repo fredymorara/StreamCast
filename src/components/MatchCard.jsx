@@ -2,15 +2,19 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../services/api';
 
+const PLACEHOLDER_IMAGE_URL = 'https://via.placeholder.com/400x200?text=No+Image';
+
 const MatchCard = ({ match }) => {
   const navigate = useNavigate();
   const formattedDate = new Date(match.date * 1000).toLocaleString();
+
+  const imageUrl = match.poster ? api.getPosterUrl(match.poster) : PLACEHOLDER_IMAGE_URL;
 
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden relative group">
       {/* Match Poster Image */}
       <img
-        src={api.getPosterUrl(match.poster)}
+        src={imageUrl}
         alt={`${match.title} poster`}
         className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
       />

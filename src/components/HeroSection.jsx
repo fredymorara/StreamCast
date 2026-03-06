@@ -2,6 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../services/api';
 
+const PLACEHOLDER_IMAGE_URL = 'https://via.placeholder.com/1200x400?text=Featured+Match';
+
 const HeroSection = ({ featuredMatch }) => {
   const navigate = useNavigate();
   if (!featuredMatch) {
@@ -20,11 +22,12 @@ const HeroSection = ({ featuredMatch }) => {
   }
 
   const formattedDate = new Date(featuredMatch.date * 1000).toLocaleString();
+  const backgroundImage = featuredMatch.poster ? api.getPosterUrl(featuredMatch.poster) : PLACEHOLDER_IMAGE_URL;
 
   return (
     <div
       className="relative bg-cover bg-center rounded-lg shadow-lg p-8 mb-8 text-white"
-      style={{ backgroundImage: `url(${api.getPosterUrl(featuredMatch.poster)})` }}
+      style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       {/* Overlay to make text readable */}
       <div className="absolute inset-0 bg-black opacity-60 rounded-lg"></div>
