@@ -90,7 +90,7 @@ const PlayerPage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <p className="text-slate-700 text-xl">Loading stream links...</p>
       </div>
     );
@@ -98,7 +98,7 @@ const PlayerPage = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-slate-50">
+      <div className="min-h-screen">
         <Header />
         <main className="container mx-auto p-4">
           <p className="text-red-600 text-xl text-center">{error}</p>
@@ -118,7 +118,7 @@ const PlayerPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
+    <div className="min-h-screen text-slate-900">
       <Header />
       <main className="container mx-auto p-4 flex flex-col">
         {/* Match Header */}

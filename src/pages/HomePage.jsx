@@ -142,7 +142,7 @@ const HomePage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-50 text-slate-900">
+      <div className="min-h-screen text-slate-900">
         <Header />
         <main className="container mx-auto p-4">
           <FilterBar
@@ -172,7 +172,7 @@ const HomePage = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-slate-50 text-slate-900">
+      <div className="min-h-screen text-slate-900">
         <Header />
         <main className="container mx-auto p-4">
           <p className="text-red-600 text-xl text-center">{error}</p>
@@ -182,7 +182,7 @@ const HomePage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
+    <div className="min-h-screen text-slate-900">
       <Header />
       <main className="container mx-auto p-4">
         <HeroSection featuredMatch={featuredMatch} />

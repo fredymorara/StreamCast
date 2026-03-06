@@ -55,7 +55,7 @@ const StreamViewPage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <p className="text-slate-700 text-xl">Loading stream...</p>
       </div>
     );
@@ -63,7 +63,7 @@ const StreamViewPage = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-slate-50">
+      <div className="min-h-screen">
         <Header />
         <main className="container mx-auto p-4">
           <p className="text-red-600 text-xl text-center">{error}</p>
@@ -80,14 +80,14 @@ const StreamViewPage = () => {
 
   if (!match || !stream || !stream.embedUrl) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <p className="text-slate-700 text-xl">Stream data incomplete or not available.</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
+    <div className="min-h-screen text-slate-900">
       <Header />
       <main className="container mx-auto p-4">
         {/* Stream View Header */}
