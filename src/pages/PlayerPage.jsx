@@ -85,7 +85,7 @@ const PlayerPage = () => {
   const handleStreamSelect = (stream) => {
     // We pass the entire stream object, or at least enough info to reconstruct it
     // For simplicity, I'll pass relevant IDs and source.
-    navigate(`/stream/${matchId}/${stream.sourceId}/${stream.id}`);
+    navigate(`/stream/${matchId}/${stream.sourceId}/${stream.streamNo}`);
   };
 
   if (loading) {

@@ -28,7 +28,7 @@ const StreamViewPage = () => {
 
         // Fetch stream details for the specific sourceId and streamId
         const streamList = await api.getStreams(sourceId, foundMatch.sources.find(s => s.source === sourceId).id); // Assuming source.id is consistent
-        const foundStream = streamList.find(s => s.id === streamId);
+        const foundStream = streamList.find(s => s.streamNo.toString() === streamId);
 
         if (!foundStream) {
           setError("Stream not found.");
