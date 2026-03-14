@@ -1,11 +1,15 @@
 import React from 'react';
+import { Helix } from 'ldrs/react';
+import 'ldrs/react/Helix.css';
 
-const LoadingSpinner = () => {
+const LoadingSpinner = ({ size = "45", color = "white", speed = "1.5" }) => {
   return (
-    <div className="flex items-center justify-center space-x-2 animate-pulse p-4">
-      <div className="w-4 h-4 bg-emerald-400 rounded-full"></div>
-      <div className="w-4 h-4 bg-emerald-400 rounded-full"></div>
-      <div className="w-4 h-4 bg-emerald-400 rounded-full"></div>
+    <div className="flex items-center justify-center p-4">
+      <Helix
+        size={size}
+        speed={speed}
+        color={color} 
+      />
     </div>
   );
 };

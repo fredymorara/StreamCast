@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
+import LoadingSpinner from '../components/LoadingSpinner';
 import { api } from '../services/api';
 
 const StreamViewPage = () => {
@@ -55,8 +56,8 @@ const StreamViewPage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-slate-700 text-xl">Loading stream...</p>
+      <div className="min-h-screen flex flex-col items-center justify-center">
+        <LoadingSpinner color="yellow" />
       </div>
     );
   }

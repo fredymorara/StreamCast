@@ -2,28 +2,28 @@ import React from 'react';
 
 const StreamSelector = ({ sources, onStreamSelect, activeStreamId }) => {
   return (
-    <div className="bg-white p-4 rounded-lg shadow-md">
-      <h3 className="text-xl font-bold mb-4 text-slate-800">Available Streams</h3>
+    <div className="bg-slate-100/10 p-4 rounded-lg shadow-md">
+      <h3 className="text-xl font-bold mb-4 text-white">Available Streams</h3>
       {Object.keys(sources).length === 0 && (
-        <p className="text-slate-600">No streams available for this match.</p>
+        <p className="text-white">No streams available for this match yet.</p>
       )}
       {Object.keys(sources).map(sourceName => (
         <div key={sourceName} className="mb-4">
-          <h4 className="text-lg font-semibold text-slate-700 mb-2">Source {sourceName}</h4>
+          <h4 className="text-lg font-semibold text-white/80 mb-2">Source {sourceName}</h4>
           {sources[sourceName].length === 0 ? (
-            <p className="text-slate-600 text-sm pl-4">No streams from this source.</p>
+            <p className="text-white text-sm pl-4">No streams from this source.</p>
           ) : (
             <ul>
               {sources[sourceName].map(stream => (
                 <li
                   key={stream.streamNo}
                   className={`flex items-center justify-between p-3 rounded-md cursor-pointer transition-colors duration-200 ${
-                    activeStreamId === stream.streamNo ? 'bg-emerald-600 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-800'
+                    activeStreamId === stream.streamNo ? 'bg-emerald-600 text-white' : 'bg-slate-100/50 m-2 border-2 border-emerald-300 hover:border-yellow-300 hover:bg-slate-100 text-slate-800'
                   }`}
                   onClick={() => onStreamSelect({ ...stream, sourceId: sourceName })}
                 >
                   <span>
-                    Stream {stream.streamNo} - {stream.lang} {stream.hd && <span className="ml-1 px-2 py-0.5 rounded-full bg-green-500 text-xs font-bold">HD</span>}
+                    Stream {stream.streamNo} - {stream.lang} {stream.hd && <span className="ml-1 px-2 py-0.5 rounded-full bg-yellow-500 text-xs font-bold">HD</span>}
                   </span>
                   {activeStreamId === stream.streamNo && <span className="ml-2 text-sm">✓</span>}
                 </li>

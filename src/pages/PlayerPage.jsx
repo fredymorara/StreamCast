@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import StreamSelector from '../components/StreamSelector';
+import LoadingSpinner from '../components/LoadingSpinner';
 import { api } from '../services/api';
 
 const PlayerPage = () => {
@@ -90,8 +91,8 @@ const PlayerPage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-slate-700 text-xl">Loading stream links...</p>
+      <div className="min-h-screen flex flex-col items-center justify-center">
+        <LoadingSpinner color="#afe872ff" size="100"/>
       </div>
     );
   }
@@ -124,11 +125,11 @@ const PlayerPage = () => {
         {/* Match Header */}
         <div className="flex items-center mb-6">
           <button onClick={() => navigate('/')} className="text-emerald-600 hover:text-emerald-700 mr-4 text-xl flex items-center">
-            ← <span className="ml-1 font-bold text-base">BCK</span>
+            ← <span className="ml-1 font-bold text-base">Back</span>
           </button>
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-slate-900">Live {match.title} Stream Links</h1>
-            <p className="text-slate-600 text-sm">To watch {match.title} streams, choose a stream link below.</p>
+            <h1 className="text-2xl md:text-3xl font-bold text-white">Live {match.title} Stream Links</h1>
+            <p className="text-slate-200 text-sm">To watch {match.title} streams, choose a stream link below.</p>
           </div>
         </div>
 
