@@ -14,3 +14,10 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## Areas for Improvement (Future Roadmap)
+
+*   **Code Architecture & State Management:** (e.g., getting rid of prop-drilling, using custom hooks).
+*   **Performance & Time Complexity:** (e.g., heavily using `useMemo` on your filtering logic so it doesn't recalculate array objects on every single render cycle, adding lazy-loading for posters).
+*   **UI/UX Polish:** (e.g., adding an empty state when filters return 0 matches, persistent URL state).
+*   **Error Handling & SEO:** (e.g., adding dynamic meta-tags so sports matches get indexed by Google, creating error boundaries so broken streams don't crash the UI).
