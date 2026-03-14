@@ -103,7 +103,7 @@ const StreamViewPage = () => {
           </div>
 
         {/* Video Player Section */}
-        <div className="bg-black aspect-video w-[100%] mx-auto rounded-lg mb-6 overflow-hidden relative shadow-2xl">
+        <div className="bg-black aspect-video w-full lg:w-[70%] mx-auto rounded-lg mb-6 overflow-hidden relative shadow-2xl">
           <iframe
             src={stream.embedUrl}
             title={`Stream for ${match.title} - ${sourceId} - Stream ${stream.streamNo}`}

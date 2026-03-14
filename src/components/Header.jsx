@@ -5,22 +5,22 @@ import FilterBar from './FilterBar';
 
 const Header = ({ filterProps }) => {
   return (
-    <header className="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-white/10 shadow-lg text-white p-4 transition-all duration-300">
-      <div className="container mx-auto flex flex-col xl:flex-row justify-between items-center gap-6">
-        <Link to="/" className="flex items-center gap-3 w-full xl:w-auto justify-center xl:justify-start hover:opacity-90 transition-opacity cursor-pointer">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center shadow-[0_0_15px_rgba(16,185,129,0.5)]">
+    <header className="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-white/10 shadow-lg text-white p-3 md:p-4 transition-all duration-300">
+      <div className="container mx-auto flex flex-row justify-between items-center gap-4 md:gap-6">
+        <Link to="/" className="flex items-center gap-2 md:gap-3 hover:opacity-90 transition-opacity cursor-pointer">
+          <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center shadow-[0_0_15px_rgba(16,185,129,0.5)]">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-          <div className="text-3xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 drop-shadow-sm whitespace-nowrap">
+          <div className="text-2xl md:text-3xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 drop-shadow-sm whitespace-nowrap">
             SpaceStream
           </div>
         </Link>
         
         {/* Navigation and Filters */}
-        <div className="w-full xl:w-auto overflow-x-auto pb-2 xl:pb-0 scrollbar-hide">
+        <div className="flex-shrink-0">
           {filterProps && <FilterBar {...filterProps} />}
         </div>
       </div>

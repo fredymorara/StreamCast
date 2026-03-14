@@ -34,22 +34,22 @@ const HeroSection = ({ featuredMatch }) => {
 
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-between">
         <div className="text-center md:text-left mb-6 md:mb-0">
-          <h2 className="text-4xl md:text-5xl font-bold mb-3 leading-tight">
+          <h2 className="text-3xl md:text-5xl font-bold mb-2 md:mb-3 leading-tight drop-shadow-md">
             {featuredMatch.title}
           </h2>
-          <p className="text-xl md:text-2xl text-slate-200 mb-4">
+          <p className="text-lg md:text-2xl text-slate-200 mb-4 drop-shadow-sm">
             📅 {formattedDate}
           </p>
           {featuredMatch.isLive && (
-            <span className="bg-red-600 text-white text-lg px-4 py-2 rounded-full font-bold">
+            <span className="bg-red-600 text-white text-base md:text-lg px-3 md:px-4 py-1.5 md:py-2 rounded-full font-bold shadow-lg animate-pulse inline-block">
               🔴 LIVE NOW
             </span>
           )}
         </div>
 
-        <div className="text-center md:text-right">
+        <div className="text-center md:text-right mt-4 md:mt-0 w-full md:w-auto">
           <button
-            className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-colors duration-200"
+            className="w-full md:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg hover:shadow-emerald-500/50 transition-all duration-300 transform hover:-translate-y-1"
             onClick={() => navigate(`/watch/${featuredMatch.id}`)}
           >
             Watch Now
