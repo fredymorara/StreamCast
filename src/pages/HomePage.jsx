@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import MatchCard from "../components/MatchCard";
 import FilterBar from "../components/FilterBar";
 import HeroSection from "../components/HeroSection";
-import { MatchCardSkeleton } from "../components/LoadingSpinner";
+import LoadingSpinner, { MatchCardSkeleton } from "../components/LoadingSpinner";
 import { api } from "../services/api";
 
 const HomePage = () => {
@@ -14,7 +14,7 @@ const HomePage = () => {
 
   // Filter and Sort States
   const [selectedSport, setSelectedSport] = useState("all");
-  const [selectedStatus, setSelectedStatus] = useState("live"); // Default to live matches
+  const [selectedStatus, setSelectedStatus] = useState("all"); // Default to all matches
   const [showHdOnly, setShowHdOnly] = useState(false);
   const [showPopularOnly, setShowPopularOnly] = useState(false);
   const [sortBy, setSortBy] = useState("date");
@@ -135,6 +135,22 @@ const HomePage = () => {
     sortOrder,
   ]);
 
+  const filterProps = {
+    sports,
+    selectedSport,
+    onSportChange: setSelectedSport,
+    selectedStatus,
+    onStatusChange: setSelectedStatus,
+    showHdOnly,
+    onShowHdOnlyChange: setShowHdOnly,
+    showPopularOnly,
+    onShowPopularOnlyChange: setShowPopularOnly,
+    sortBy,
+    onSortByChange: setSortBy,
+    sortOrder,
+    onSortOrderChange: setSortOrder,
+  };
+
   const featuredMatch = React.useMemo(() => {
     let currentFeaturedMatch = null;
     if (liveMatches.length > 0) {
@@ -176,29 +192,10 @@ const HomePage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen text-slate-900">
-        <Header />
-        <main className="container mx-auto p-4">
-          <FilterBar
-            sports={[]}
-            selectedSport={selectedSport}
-            onSportChange={setSelectedSport}
-            selectedStatus={selectedStatus}
-            onStatusChange={setSelectedStatus}
-            showHdOnly={showHdOnly}
-            onShowHdOnlyChange={setShowHdOnly}
-            showPopularOnly={showPopularOnly}
-            onShowPopularOnlyChange={setShowPopularOnly}
-            sortBy={sortBy}
-            onSortByChange={setSortBy}
-            sortOrder={sortOrder}
-            onSortOrderChange={setSortOrder}
-          />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {[...Array(8)].map((_, index) => (
-              <MatchCardSkeleton key={index} />
-            ))}
-          </div>
+      <div className="min-h-screen text-slate-900 flex flex-col">
+        <Header filterProps={filterProps} />
+        <main className="container mx-auto p-4 flex-grow flex flex-col items-center justify-center">
+          <LoadingSpinner color="#99ec09ff" size="100" />
         </main>
       </div>
     );
@@ -217,24 +214,9 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen text-slate-900">
-      <Header />
+      <Header filterProps={filterProps} />
       <main className="container mx-auto p-4">
         <HeroSection featuredMatch={featuredMatch} />
-        <FilterBar
-          sports={sports}
-          selectedSport={selectedSport}
-          onSportChange={setSelectedSport}
-          selectedStatus={selectedStatus}
-          onStatusChange={setSelectedStatus}
-          showHdOnly={showHdOnly}
-          onShowHdOnlyChange={setShowHdOnly}
-          showPopularOnly={showPopularOnly}
-          onShowPopularOnlyChange={setShowPopularOnly}
-          sortBy={sortBy}
-          onSortByChange={setSortBy}
-          sortOrder={sortOrder}
-          onSortOrderChange={setSortOrder}
-        />
         <h2 className="text-white text-3xl font-bold mb-6 shadow-black/50 drop-shadow-md">
           {getPageTitle()}
         </h2>

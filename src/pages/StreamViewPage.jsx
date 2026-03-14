@@ -82,7 +82,7 @@ const StreamViewPage = () => {
   if (!match || !stream || !stream.embedUrl) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-slate-700 text-xl">Stream data incomplete or not available.</p>
+        <p className="text-white text-xl">Stream data incomplete or not available.</p>
       </div>
     );
   }
@@ -97,13 +97,13 @@ const StreamViewPage = () => {
               ← <span className="ml-1 font-bold text-base">Back to Stream Links</span>
             </button>
             <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-slate-900">{match.title}</h1>
-              <p className="text-slate-600 text-sm">Streaming from {sourceId} - Stream {stream.streamNo}</p>
+              <h1 className="text-2xl md:text-3xl font-bold text-white">{match.title}</h1>
+              <p className="text-white/80 text-sm">Streaming from {sourceId} - Stream {stream.streamNo}</p>
             </div>
           </div>
 
         {/* Video Player Section */}
-        <div className="bg-black aspect-video w-full rounded-lg mb-6 overflow-hidden relative">
+        <div className="bg-black aspect-video w-[100%] mx-auto rounded-lg mb-6 overflow-hidden relative shadow-2xl">
           <iframe
             src={stream.embedUrl}
             title={`Stream for ${match.title} - ${sourceId} - Stream ${stream.streamNo}`}

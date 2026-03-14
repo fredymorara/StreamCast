@@ -92,7 +92,7 @@ const PlayerPage = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center">
-        <LoadingSpinner color="#afe872ff" size="100"/>
+        <LoadingSpinner color="#99ec09ff" size="100"/>
       </div>
     );
   }

@@ -4,7 +4,7 @@ import 'ldrs/react/Helix.css';
 
 const LoadingSpinner = ({ size = "45", color = "white", speed = "1.5" }) => {
   return (
-    <div className="flex items-center justify-center p-4">
+    <div className="flex h-full w-full items-center justify-center p-4">
       <Helix
         size={size}
         speed={speed}
