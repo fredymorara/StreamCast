@@ -57,7 +57,7 @@ const StreamViewPage = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center">
-        <LoadingSpinner color="yellow" />
+        <LoadingSpinner color="#99ec09ff" size="100"/>
       </div>
     );
   }
